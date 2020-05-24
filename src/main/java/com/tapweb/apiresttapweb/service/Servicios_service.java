@@ -36,4 +36,32 @@ public class Servicios_service {
         return convertidor.convertir_lista_servicios(serv_repo.findAll());
     }
 
+    public List<Servicios_model> listarByMedico(int id_persona){
+        return convertidor.convertir_lista_servicios(serv_repo.getServiciosByMedico(id_persona));
+    }
+
+    public Servicios_model getServicioById(int id_servicio){
+        Servicios aux_servicio = serv_repo.findById(id_servicio);
+        Servicios_model servicio = new Servicios_model(aux_servicio);
+        return servicio;
+    }
+
+    public int updateServicio(Servicios actualizado){
+        String servicio = actualizado.getServicio();
+        int costo = actualizado.getCosto();
+        int id_servicio = actualizado.getCosto();
+        System.out.println(actualizado.toString());
+        return serv_repo.UpdateServicioById(servicio, costo, id_servicio);
+    }
+
+    public boolean delete(Servicios servicio_eliminado){
+        try{
+            serv_repo.delete(servicio_eliminado);
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();            
+            return false;
+        }
+    }
+
 }

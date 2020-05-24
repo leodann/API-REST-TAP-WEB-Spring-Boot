@@ -23,7 +23,7 @@ public class Servicios_model {
         this.id_servicio = servicio.getId_servicio();
         this.servicio = servicio.getServicio();      
         this.costo = servicio.getCosto();
-        this.id_persona = servicio.getId_Persona();
+        this.id_persona = servicio.getId_persona();
     }
 
     public int getCosto(){

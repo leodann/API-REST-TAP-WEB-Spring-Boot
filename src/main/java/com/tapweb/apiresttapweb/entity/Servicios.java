@@ -8,58 +8,37 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table (name="servicios")
 @Entity
+@Table(name = "servicios")
 public class Servicios implements Serializable{
     @GeneratedValue
-    @Id
+    @Id 
     @Column(name="id_servicio")
     private int id_servicio;
     @Column(name="servicio")
     private String servicio;
-    @Column(name = "costo")
+    @Column (name = "costo")    
     private int costo;
-    @Column(name = "id_persona")
+    @Column(name="id_persona")
     private int id_persona;
+
 
     public Servicios() {
     }
 
-    public Servicios(int id, String servicio, int costo, int id_persona) {
-        this.id_servicio = id;
+    public Servicios(int id_servicio, String servicio, int costo, int id_persona) {
+        this.id_servicio = id_servicio;
         this.servicio = servicio;
         this.costo = costo;
         this.id_persona = id_persona;
     }
 
-    public Servicios(String servicio, int costo, int id_persona){
-        this.servicio = servicio;
-        this.costo = costo;
-        this.id_persona= id_persona;
-    }
-
-    public int getCosto(){
-        return this.costo;
-    }
-
-    public void setCosto(int costo){
-        this.costo = costo;
-    }
-
-    public int getId_Persona(){
-        return this.id_persona;
-    }
-
-    public void setId_Persona(int id){
-        this.id_persona = id;
-    }
-
-    public int getId_servicio(){
+    public int getId_servicio() {
         return this.id_servicio;
     }
 
-    public void setId_servicio(int id){
-        this.id_servicio = id;
+    public void setId_servicio(int id_servicio) {
+        this.id_servicio = id_servicio;
     }
 
     public String getServicio() {
@@ -70,18 +49,49 @@ public class Servicios implements Serializable{
         this.servicio = servicio;
     }
 
+    public int getCosto() {
+        return this.costo;
+    }
+
+    public void setCosto(int costo) {
+        this.costo = costo;
+    }
+
+    public int getId_persona() {
+        return this.id_persona;
+    }
+
+    public void setId_persona(int id_persona) {
+        this.id_persona = id_persona;
+    }
+
+    public Servicios id_servicio(int id_servicio) {
+        this.id_servicio = id_servicio;
+        return this;
+    }
+
     public Servicios servicio(String servicio) {
         this.servicio = servicio;
+        return this;
+    }
+
+    public Servicios costo(int costo) {
+        this.costo = costo;
+        return this;
+    }
+
+    public Servicios id_persona(int id_persona) {
+        this.id_persona = id_persona;
         return this;
     }
 
     @Override
     public String toString() {
         return "{" +
-            " id_servicio='"+getId_servicio()+"'"+
-            " servicio='" + getServicio() + "'" +
-            " costo='"+ getCosto()+"'"+
-            " id_persona='"+getId_Persona()+"'"+
+            " id_servicio='" + getId_servicio() + "'" +
+            ", servicio='" + getServicio() + "'" +
+            ", costo='" + getCosto() + "'" +
+            ", id_persona='" + getId_persona() + "'" +
             "}";
     }
 
