@@ -17,13 +17,41 @@ public class Servicios implements Serializable{
     private int id_servicio;
     @Column(name="servicio")
     private String servicio;
+    @Column(name = "costo")
+    private int costo;
+    @Column(name = "id_persona")
+    private int id_persona;
 
     public Servicios() {
     }
 
-    public Servicios(int id, String servicio) {
+    public Servicios(int id, String servicio, int costo, int id_persona) {
         this.id_servicio = id;
         this.servicio = servicio;
+        this.costo = costo;
+        this.id_persona = id_persona;
+    }
+
+    public Servicios(String servicio, int costo, int id_persona){
+        this.servicio = servicio;
+        this.costo = costo;
+        this.id_persona= id_persona;
+    }
+
+    public int getCosto(){
+        return this.costo;
+    }
+
+    public void setCosto(int costo){
+        this.costo = costo;
+    }
+
+    public int getId_Persona(){
+        return this.id_persona;
+    }
+
+    public void setId_Persona(int id){
+        this.id_persona = id;
     }
 
     public int getId_servicio(){
@@ -52,6 +80,8 @@ public class Servicios implements Serializable{
         return "{" +
             " id_servicio='"+getId_servicio()+"'"+
             " servicio='" + getServicio() + "'" +
+            " costo='"+ getCosto()+"'"+
+            " id_persona='"+getId_Persona()+"'"+
             "}";
     }
 

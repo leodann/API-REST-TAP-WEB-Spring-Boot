@@ -28,10 +28,17 @@ public class Servicios_controller {
         return serv_serv.listar();
     }
 
-    @PostMapping(value="/servicios/insertar")
+    @PostMapping(value = "/servicios/registrar")
+    public boolean registrar(@RequestBody Servicios servicio){
+        System.out.println(servicio.toString());
+        return true;
+    }
+
+    /*@PostMapping(value="/servicios/insertar")
     public boolean insertar(@RequestBody @Valid Servicios servicio){
         System.out.println(servicio.toString());
-        return serv_serv.registrar(servicio);
-    }
+        return true;
+        //return serv_serv.registrar(servicio);
+    }*/
 
 }

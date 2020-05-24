@@ -55,16 +55,9 @@ public class Usuarios_controller {
         String email = aux_usuario.getEmail();                
         Usuarios_model user = user_serv.getUserBypassword(email,password);
         System.out.println("ID:"+user.getId_usuario());
-        if(user!=null){
-            Roles_Usuarios_model rol = roles_serv.getByUser(user.getId_usuario());
-            int id_persona = per_serv.getIdUser(user.getId_usuario());
-            loged = new User_login( user.getId_usuario(),
-                                    rol.getId_rol(),
-                                    id_persona,
-                                    true);
-        }else{
-            loged = new User_login();
-        }
+        Roles_Usuarios_model rol = roles_serv.getByUser(user.getId_usuario());
+        int id_persona = per_serv.getIdUser(user.getId_usuario());
+        loged = new User_login(user.getId_usuario(), rol.getId_rol(), id_persona, true);
         return loged;
     }    
     
