@@ -1,24 +1,23 @@
-package com.tapweb.apiresttapweb.model;
+package com.tapweb.apiresttapweb.llaves_compuestas;
 
-import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
+import java.io.Serializable;
 
-public class Roles_Usuarios_model {
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class Roles_Usuarios_Id implements Serializable{
+    @Column(name = "id_rol")
     private int id_rol;
+    @Column(name = "id_usuario")
     private int id_usuario;
 
-
-
-    public Roles_Usuarios_model() {
+    public Roles_Usuarios_Id() {
     }
 
-    public Roles_Usuarios_model(int id_rol, int id_usuario) {
+    public Roles_Usuarios_Id(int id_rol, int id_usuario) {
         this.id_rol = id_rol;
         this.id_usuario = id_usuario;
-    }
-
-    public Roles_Usuarios_model(Roles_Usuarios roles_u){
-        this.id_rol = roles_u.getId().getId_rol();
-        this.id_usuario = roles_u.getId().getId_usuario();
     }
 
     public int getId_rol() {
@@ -37,12 +36,12 @@ public class Roles_Usuarios_model {
         this.id_usuario = id_usuario;
     }
 
-    public Roles_Usuarios_model id_rol(int id_rol) {
+    public Roles_Usuarios_Id id_rol(int id_rol) {
         this.id_rol = id_rol;
         return this;
     }
 
-    public Roles_Usuarios_model id_usuario(int id_usuario) {
+    public Roles_Usuarios_Id id_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
         return this;
     }
@@ -54,7 +53,5 @@ public class Roles_Usuarios_model {
             ", id_usuario='" + getId_usuario() + "'" +
             "}";
     }
-    
-
     
 }

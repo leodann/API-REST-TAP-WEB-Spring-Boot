@@ -20,7 +20,6 @@ import com.tapweb.apiresttapweb.service.Persona_service;
 import com.tapweb.apiresttapweb.service.Roles_Usuarios_service;
 import com.tapweb.apiresttapweb.service.Usuarios_service;
 import com.tapweb.apiresttapweb.entity.Persona;
-import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
 import com.tapweb.apiresttapweb.model.Especialidad_model;
 import com.tapweb.apiresttapweb.model.Persona_medico;
@@ -75,14 +74,12 @@ public class Persona_controller {
                                             p.getPassword()
         );
 
-        boolean usuario_creado = user_serv.registrar(usuario);
+        boolean usuario_creado = user_serv.registrar(usuario);        
         if (usuario_creado){
             int id_usuario = user_serv.getLastUserId();
             int id_rol = 1;
-            Roles_Usuarios roles_u = new Roles_Usuarios(    id_rol,
-                                                            id_usuario
-            );
-            boolean rol_asignado = roles_serv.registrar(roles_u);
+            Roles_Usuarios_Id roles_pk = new Roles_Usuarios_Id(id_rol,id_usuario);
+            boolean rol_asignado = roles_serv.registrar(roles_pk);
             Persona persona = new Persona(  p.getNombre(),
                                             p.getEstado(),
                                             p.getPais(),
@@ -147,10 +144,8 @@ public class Persona_controller {
         if (usuario_creado){
             int id_usuario = user_serv.getLastUserId();
             int id_rol = 2;
-            Roles_Usuarios rol_u = new Roles_Usuarios(  id_rol,
-                                                        id_usuario
-            );
-            boolean rol_asignado = roles_serv.registrar(rol_u);
+            Roles_Usuarios_Id roles_pk = new Roles_Usuarios_Id(id_rol,id_usuario);
+            boolean rol_asignado = roles_serv.registrar(roles_pk);            
             Persona persona = new Persona(  p.getNombre(),
                                             p.getEstado(),
                                             p.getPais(),
