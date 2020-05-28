@@ -1,18 +1,3 @@
-create table personas (
-    id_persona INT AUTO_INCREMENT PRIMARY KEY,
-    nombre varchar (50),
-    estado varchar (20),
-    pais varchar (20),
-    municipio varchar (30),
-    telefono varchar (12)
-);
-
-create table pacientes (
-    id_persona int not null primary key,
-    fecha_nac date,
-    CONSTRAINT pacientesFK1 foreign key (id_persona) references personas(id_persona) on update CASCADE on delete CASCADE
-);
-
 create table alergias (
     id_alergia int not null auto_increment primary key ,
     alergia varchar (20)
@@ -40,31 +25,6 @@ create table antecendentes (
     CONSTRAINT antecedentesFK2 foreign key (id_alergia) references alergias (id_alergia) ON UPDATE CASCADE ON DELETE CASCADE ,
     CONSTRAINT antecedentesFK3 foreign key (id_cirugia) references cirugias (id_cirugia) ON UPDATE CASCADE ON DELETE CASCADE ,
     CONSTRAINT antecedentesFK4 foreign key (id_cronica) references enfermedades_cronicas (id_cronica) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-create table medicos (
-    id_persona int not null primary key ,
-    numero_cedula int not null unique,
-    CONSTRAINT medicosFK1 foreign key (id_persona) references  personas (id_persona) ON UPDATE CASCADE ON DELETE cascade
-);
-
-create table servicios (id_servicio int not null auto_increment,
-                        servicio varchar(50),
-                        costo int,
-                        id_persona int,
-                        CONSTRAINT serviciosPK primary key (id_servicio),
-                        CONSTRAINT serviciosFK1 foreign key (id_persona) references medicos(id_persona) ON UPDATE CASCADE ON DELETE CASCADE
-);
-create table especialidades (
-    id_especialidad int not null auto_increment primary key ,
-    especialidad varchar (20)
-);
-create table medico_especialidad (
-    id_persona int not null ,
-    id_especialidad int not null,
-    CONSTRAINT medico_especialidadPK primary key (id_persona,id_especialidad),
-    CONSTRAINT medico_especialidadFK1 foreign key (id_persona) references  medicos (id_persona) ON UPDATE CASCADE ON DELETE CASCADE ,
-    CONSTRAINT medico_especialidadFK2 foreign key (id_especialidad) references especialidades (id_especialidad) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create table consultas (
@@ -246,24 +206,4 @@ alter table personas add direccion varchar (50);
 alter table antecendentes drop direccion;
 alter table antecendentes drop apellidos;
 drop  table antecendentes;
-create table usuarios ( id_usuario int not null auto_increment,
-                        email varchar (30) not null,
-                        contrasena varchar (20) not null,
-                        CONSTRAINT usuariosPK primary key (id_usuario),
-                        CONSTRAINT usuarios_unique1 UNIQUE (email));
-create table roles (    id_rol int not null auto_increment,
-                        rol varchar (10),
-                        CONSTRAINT rolPK primary key (id_rol));
 
-create table roles_usuario (id_usuario int,
-                            id_rol int,
-                            CONSTRAINT roles_usuarioPK primary key (id_usuario,id_rol),
-                            CONSTRAINT roles_usuarioFK1 foreign key (id_usuario) references usuarios(id_usuario),
-                            CONSTRAINT roles_usuarioFK2 foreign key (id_rol) references roles(id_rol) );
-
-insert into roles (rol) values ('medico'),('paciente');
-alter table personas add column id_usuario int;
-alter table personas add CONSTRAINT personasFK1 foreign key (id_usuario) references usuarios (id_usuario) ON UPDATE CASCADE ON DELETE CASCADE ;
-
-alter table usuarios drop column contrasena;
-alter table usuarios add column password varchar (20);
