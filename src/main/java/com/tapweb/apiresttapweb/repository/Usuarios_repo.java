@@ -7,7 +7,8 @@ import com.tapweb.apiresttapweb.entity.Usuarios;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
+import org.springframework.stereotype.Repository;
+@Repository("user_repo")
 public interface Usuarios_repo extends JpaRepository<Usuarios,Serializable>{
     @Query(
         value = "SELECT id_usuario from usuarios order by id_usuario DESC LIMIT 1",

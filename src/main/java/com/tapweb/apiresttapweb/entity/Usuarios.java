@@ -1,5 +1,7 @@
 package com.tapweb.apiresttapweb.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="usuarios")
-public class Usuarios {
+public class Usuarios implements Serializable{
     @GeneratedValue
     @Id
     @Column(name = "id_usuario")
