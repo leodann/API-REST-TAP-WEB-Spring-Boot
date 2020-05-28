@@ -2,10 +2,13 @@ package com.tapweb.apiresttapweb.entity;
 
 import java.io.Serializable;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,9 @@ public class Usuarios implements Serializable{
     @Column(name = "password")
     private String password;
 
+    @OneToMany(mappedBy = "usuario")
+    private Set<Roles_Usuarios>roles;
+
 
     public Usuarios() {
     }
@@ -30,6 +36,25 @@ public class Usuarios implements Serializable{
         this.password = password;
     }
 
+    public Usuarios(int id_usuario, String email, String password, Set<Roles_Usuarios> roles) {
+        this.id_usuario = id_usuario;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public Set<Roles_Usuarios> getRoles() {
+        return this.roles;
+    }
+
+    public void setRoles(Set<Roles_Usuarios> roles) {
+        this.roles = roles;
+    }
+
+    public Usuarios roles(Set<Roles_Usuarios> roles) {
+        this.roles = roles;
+        return this;
+    } 
     public int getId_usuario() {
         return this.id_usuario;
     }

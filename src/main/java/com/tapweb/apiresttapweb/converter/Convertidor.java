@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tapweb.apiresttapweb.entity.Roles;
+import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
+import com.tapweb.apiresttapweb.model.Roles_Usuarios_model;
 import com.tapweb.apiresttapweb.model.Roles_model;
 import com.tapweb.apiresttapweb.model.Usuarios_model;
 
@@ -27,5 +29,13 @@ public class Convertidor {
             mroles.add(new Roles_model(rol));
         }
         return mroles;
+    }
+
+    public List<Roles_Usuarios_model>convertir_roles_usuarios(List<Roles_Usuarios>roles){
+        List<Roles_Usuarios_model>mroles_u = new ArrayList<>();
+        for(Roles_Usuarios rol : roles){
+            mroles_u.add(new Roles_Usuarios_model(rol));
+        }
+        return mroles_u;
     }
 }

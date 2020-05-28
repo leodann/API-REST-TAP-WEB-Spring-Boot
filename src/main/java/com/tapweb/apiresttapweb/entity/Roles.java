@@ -2,10 +2,13 @@ package com.tapweb.apiresttapweb.entity;
 
 import java.io.Serializable;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,14 +21,31 @@ public class Roles implements Serializable{
     @Column(name = "rol")    
     private String rol;
 
+    @OneToMany(mappedBy = "rol")
+    private Set<Roles_Usuarios> usuarios;
+
     public Roles() {
     }
+
+    public Roles(int id_rol, String rol, Set<Roles_Usuarios> usuarios) {
+        this.id_rol = id_rol;
+        this.rol = rol;
+        this.usuarios = usuarios;
+    }
+
+    public Set<Roles_Usuarios> getUsuarios() {
+        return this.usuarios;
+    }
+
+    public void setUsuarios(Set<Roles_Usuarios> usuarios) {
+        this.usuarios = usuarios;
+    }    
 
     public Roles(int id_rol, String rol) {
         this.id_rol = id_rol;
         this.rol = rol;
     }
-
+    
     public int getId_rol() {
         return this.id_rol;
     }

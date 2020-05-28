@@ -1,6 +1,7 @@
 package com.tapweb.apiresttapweb.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.tapweb.apiresttapweb.converter.Convertidor;
 import com.tapweb.apiresttapweb.entity.Usuarios;
@@ -45,5 +46,9 @@ public class Usuarios_service {
                                                     aux_user.getEmail(),
                                                     aux_user.getPassword());
         return usuario;
+    }
+
+    public Usuarios getUsuario(int id){
+        return user_repo.getById(id);
     }
 }
