@@ -1,6 +1,6 @@
 package com.tapweb.apiresttapweb.composite_objects;
 
-import com.tapweb.apiresttapweb.entity.Usuarios;
+
 import com.tapweb.apiresttapweb.model.Persona_model;
 
 public class Persona_medico {

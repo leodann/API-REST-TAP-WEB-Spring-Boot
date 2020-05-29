@@ -3,10 +3,14 @@ package com.tapweb.apiresttapweb.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tapweb.apiresttapweb.entity.Medico;
+import com.tapweb.apiresttapweb.entity.Paciente;
 import com.tapweb.apiresttapweb.entity.Persona;
 import com.tapweb.apiresttapweb.entity.Roles;
 import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
+import com.tapweb.apiresttapweb.model.Medico_model;
+import com.tapweb.apiresttapweb.model.Paciente_model;
 import com.tapweb.apiresttapweb.model.Persona_model;
 import com.tapweb.apiresttapweb.model.Roles_Usuarios_model;
 import com.tapweb.apiresttapweb.model.Roles_model;
@@ -47,5 +51,21 @@ public class Convertidor {
             mpersona.add(new Persona_model(persona));
         }
         return mpersona;
+    }
+
+    public List<Paciente_model> convertir_paciente(List<Paciente> pacientes){
+        List<Paciente_model>mpaciente = new ArrayList<>();
+        for(Paciente paciente : pacientes){
+            mpaciente.add(new Paciente_model(paciente));
+        }
+        return mpaciente;
+    }
+
+    public List<Medico_model> convertir_medico(List<Medico> medicos){
+        List<Medico_model>mmedico = new ArrayList<>();
+        for (Medico medico : medicos){
+            mmedico.add(new Medico_model(medico));
+        }
+        return mmedico;
     }
 }

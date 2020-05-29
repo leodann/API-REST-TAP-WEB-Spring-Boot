@@ -51,9 +51,9 @@ public class Roles_Usuarios_service {
 
     public Roles_Usuarios_model getRolesByUser(int id_usuario){
         Roles_Usuarios aux_rol = roles_u_repo.findByIdUser(id_usuario);
-        Roles_Usuarios_model rol = new Roles_Usuarios_model(
-                                    aux_rol.getId().getId_rol(),
-                                    aux_rol.getId().getId_usuario()
+        Roles_Usuarios_model rol = new Roles_Usuarios_model(                                    
+                                    aux_rol.getId().getId_usuario(),
+                                    aux_rol.getId().getId_rol()
         );
         return rol;
     }

@@ -40,6 +40,12 @@ public class Persona implements Serializable{
     @JsonIgnore
     private Usuarios id_usuario;
 
+    @OneToOne(mappedBy = "persona")
+    private Paciente paciente;
+
+    @OneToOne(mappedBy = "persona")
+    private Medico medico;
+
     public Persona() {
     }
 
