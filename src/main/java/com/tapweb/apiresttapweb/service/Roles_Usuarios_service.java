@@ -5,9 +5,7 @@ import com.tapweb.apiresttapweb.entity.Roles;
 import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
 import com.tapweb.apiresttapweb.repository.Roles_Usuarios_repo;
-import com.tapweb.apiresttapweb.repository.Roles_repo;
 
-import java.util.Optional;
 
 import com.tapweb.apiresttapweb.composite_keys.Roles_Usuario_PK;
 import com.tapweb.apiresttapweb.model.Roles_Usuarios_model;

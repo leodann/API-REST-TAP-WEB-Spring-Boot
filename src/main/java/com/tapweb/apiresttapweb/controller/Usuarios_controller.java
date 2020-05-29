@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-
 import com.tapweb.apiresttapweb.entity.Usuarios;
 import com.tapweb.apiresttapweb.model.Usuarios_model;
 import com.tapweb.apiresttapweb.service.Usuarios_service;
@@ -22,8 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Usuarios_controller {
     @Autowired
     @Qualifier("user_serv")
-    private Usuarios_service user_serv;
-    @Autowired
+    private Usuarios_service user_serv;    
 
     @GetMapping(value="/usuarios/listar")
     public List<Usuarios_model> listar_usuarios(){
@@ -33,7 +31,17 @@ public class Usuarios_controller {
     @PostMapping(value="/usuarios/registrar")
     public boolean registrar_usuario(@RequestBody @Valid Usuarios usuario){
         return user_serv.registrar(usuario);
-    }   
+    }
+
+    @PostMapping(value="/usuarios/registrar/medico")
+    public boolean registrar_usuario_medico(@RequestBody @Valid Usuarios usuario){                
+        return user_serv.registrar_medico(usuario);
+    }
+
+    @PostMapping(value="/usuarios/registrar/paciente")
+    public boolean registrar_usuario_paciente(@RequestBody @Valid Usuarios usuario){
+        return user_serv.registrar_paciente(usuario);
+    }
 
     @GetMapping(value = "/usuarios/get")
     public Usuarios_model getaUser(){
@@ -50,6 +58,6 @@ public class Usuarios_controller {
         int id_persona = per_serv.getIdUser(user.getId_usuario());
         loged = new User_login(user.getId_usuario(), rol.getId_rol(), id_persona, true);
         return loged;
-    }*/   
+    }*/
     
 }

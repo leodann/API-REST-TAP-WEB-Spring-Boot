@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.tapweb.apiresttapweb.entity.Usuarios;
 
-import org.hibernate.query.NativeQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

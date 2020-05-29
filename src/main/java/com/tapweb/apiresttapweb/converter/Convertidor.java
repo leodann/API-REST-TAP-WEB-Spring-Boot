@@ -3,9 +3,11 @@ package com.tapweb.apiresttapweb.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tapweb.apiresttapweb.entity.Persona;
 import com.tapweb.apiresttapweb.entity.Roles;
 import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
+import com.tapweb.apiresttapweb.model.Persona_model;
 import com.tapweb.apiresttapweb.model.Roles_Usuarios_model;
 import com.tapweb.apiresttapweb.model.Roles_model;
 import com.tapweb.apiresttapweb.model.Usuarios_model;
@@ -37,5 +39,13 @@ public class Convertidor {
             mroles_u.add(new Roles_Usuarios_model(rol));
         }
         return mroles_u;
+    }
+
+    public List<Persona_model>convertir_persona(List<Persona> personas){
+        List<Persona_model>mpersona = new ArrayList<>();
+        for(Persona persona : personas){
+            mpersona.add(new Persona_model(persona));
+        }
+        return mpersona;
     }
 }

@@ -1,7 +1,6 @@
 package com.tapweb.apiresttapweb.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.tapweb.apiresttapweb.converter.Convertidor;
 import com.tapweb.apiresttapweb.entity.Roles;

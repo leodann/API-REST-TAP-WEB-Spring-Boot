@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,8 @@ public class Roles_Usuarios_controller {
     @Autowired
     @Qualifier("roles_u_serv")
     private Roles_Usuarios_service roles_u_serv;
-
+    
+    @ResponseBody
     @GetMapping(value = "/roles_usuarios/listar")
     public Iterable<Roles_Usuarios> getRoles(){
         return roles_u_serv.listar_roles_u();
