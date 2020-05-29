@@ -61,7 +61,7 @@ public class Usuarios_service {
     }
 
     public List<Usuarios_model>listar_usuarios(){
-        return convertidor.convertir_usuarios(user_repo.findAll());
+        return convertidor.convertir_usuarios(user_repo.getAllUsers());
     }
 
     public int getLastUserId(){

@@ -1,5 +1,8 @@
 package com.tapweb.apiresttapweb.entity;
+
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 
@@ -7,6 +10,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Table (name = "personas")
 @Entity
@@ -29,14 +34,16 @@ public class Persona implements Serializable{
     private String apellidos;
     @Column(name="direccion")
     private String direccion;
-    @Column(name="id_usuario")
-    private int id_usuario;
-
+    
+    @OneToOne
+    @JoinColumn(name="id_usuario")    
+    @JsonIgnore
+    private Usuarios id_usuario;
 
     public Persona() {
     }
 
-    public Persona(int id_persona, String nombre, String estado, String pais, String municipio, String telefono, String apellidos, String direccion, int id_usuario) {
+    public Persona(int id_persona, String nombre, String estado, String pais, String municipio, String telefono, String apellidos, String direccion, Usuarios user) {
         this.id_persona = id_persona;
         this.nombre = nombre;
         this.estado = estado;
@@ -45,10 +52,10 @@ public class Persona implements Serializable{
         this.telefono = telefono;
         this.apellidos = apellidos;
         this.direccion = direccion;
-        this.id_usuario = id_usuario;
+        this.id_usuario = user;
     }
 
-    public Persona (String _nombre, String _estado, String _pais, String _municipio, String _telefono,String _apellidos, String _direccion, int _id_usuario){     
+    public Persona (String _nombre, String _estado, String _pais, String _municipio, String _telefono,String _apellidos, String _direccion, Usuarios user){     
         this.nombre = _nombre;
         this.estado = _estado;
         this.pais = _pais;
@@ -56,7 +63,7 @@ public class Persona implements Serializable{
         this.telefono = _telefono;
         this.apellidos = _apellidos;
         this.direccion = _direccion;
-        this.id_usuario = _id_usuario;        
+        this.id_usuario = user; 
     }
 
     public int getId_persona() {
@@ -123,11 +130,11 @@ public class Persona implements Serializable{
         this.direccion = direccion;
     }
 
-    public int getId_usuario() {
+    public Usuarios getId_usuario() {
         return this.id_usuario;
     }
 
-    public void setId_usuario(int id_usuario) {
+    public void setId_usuario(Usuarios id_usuario) {
         this.id_usuario = id_usuario;
     }
 
@@ -171,11 +178,6 @@ public class Persona implements Serializable{
         return this;
     }
 
-    public Persona id_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
-        return this;
-    }
-
     @Override
     public String toString() {
         return "{" +
@@ -187,7 +189,7 @@ public class Persona implements Serializable{
             ", telefono='" + getTelefono() + "'" +
             ", apellidos='" + getApellidos() + "'" +
             ", direccion='" + getDireccion() + "'" +
-            ", id_usuario='" + getId_usuario() + "'" +
+            ", id_usuario='" + getId_usuario().getId_usuario() + "'" +
             "}";
     }
 

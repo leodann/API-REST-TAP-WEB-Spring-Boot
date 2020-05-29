@@ -1,6 +1,7 @@
 package com.tapweb.apiresttapweb.repository;
 
 import java.io.Serializable;
+import java.util.*;
 
 import com.tapweb.apiresttapweb.entity.Usuarios;
 
@@ -26,4 +27,10 @@ public interface Usuarios_repo extends JpaRepository<Usuarios,Serializable>{
         nativeQuery = true        
     )
     Usuarios getById(@Param("id_usuario")int id);
+
+    @Query(
+        value = "SELECT * FROM usuarios",
+        nativeQuery = true
+    )
+    List<Usuarios> getAllUsers();
 }

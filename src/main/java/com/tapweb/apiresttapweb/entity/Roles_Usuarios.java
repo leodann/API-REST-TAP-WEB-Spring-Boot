@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tapweb.apiresttapweb.composite_keys.Roles_Usuario_PK;
 
 
@@ -21,11 +22,13 @@ public class Roles_Usuarios implements Serializable{
     @ManyToOne
     @MapsId("id_rol")    
     @JoinColumn(name = "id_rol", nullable = false) 
+    @JsonIgnore
     private Roles rol;
 
     @ManyToOne    
     @MapsId("id_usuario")
-    @JoinColumn(name = "id_usuario", nullable = false)
+    @JoinColumn(name = "id_usuario", nullable = false)   
+    @JsonIgnore 
     private Usuarios usuario;
 
 

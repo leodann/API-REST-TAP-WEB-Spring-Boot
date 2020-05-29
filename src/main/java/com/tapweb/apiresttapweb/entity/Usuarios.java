@@ -2,14 +2,17 @@ package com.tapweb.apiresttapweb.entity;
 
 import java.io.Serializable;
 
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="usuarios")
@@ -24,7 +27,12 @@ public class Usuarios implements Serializable{
     private String password;
 
     @OneToMany(mappedBy = "usuario")
-    private Set<Roles_Usuarios>roles;
+    @JsonIgnore
+    private List<Roles_Usuarios>roles;
+
+    @OneToOne(mappedBy = "id_usuario")
+    @JsonIgnore
+    private Persona persona;
 
 
     public Usuarios() {
@@ -36,25 +44,34 @@ public class Usuarios implements Serializable{
         this.password = password;
     }
 
-    public Usuarios(int id_usuario, String email, String password, Set<Roles_Usuarios> roles) {
+    public Usuarios(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public Usuarios(int id_usuario, String email, String password, List<Roles_Usuarios> roles) {
         this.id_usuario = id_usuario;
         this.email = email;
         this.password = password;
         this.roles = roles;
     }
 
-    public Set<Roles_Usuarios> getRoles() {
+    public Persona getPersona(){
+        return persona;
+    }
+
+    public void setPersona(Persona p){
+        this.persona=p;
+    }
+
+    public List<Roles_Usuarios> getRoles() {
         return this.roles;
     }
 
-    public void setRoles(Set<Roles_Usuarios> roles) {
+    public void setRoles(List<Roles_Usuarios> roles) {
         this.roles = roles;
     }
-
-    public Usuarios roles(Set<Roles_Usuarios> roles) {
-        this.roles = roles;
-        return this;
-    } 
+    
     public int getId_usuario() {
         return this.id_usuario;
     }

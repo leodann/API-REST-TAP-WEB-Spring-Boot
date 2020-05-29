@@ -1,6 +1,7 @@
 package com.tapweb.apiresttapweb.model;
 
 import com.tapweb.apiresttapweb.entity.Persona;
+import com.tapweb.apiresttapweb.entity.Usuarios;
 
 public class Persona_model {
     private int id_persona;
@@ -11,11 +12,11 @@ public class Persona_model {
     private String telefono;
     private String apellidos;
     private String direccion;
-    private int id_usuario;
+    private Usuarios usuario;
 
     public Persona_model(){}
     
-    public Persona_model(int id_persona, String nombre, String estado, String pais, String municipio, String telefono, String apellidos, String direccion, int id_usuario) {
+    public Persona_model(int id_persona, String nombre, String estado, String pais, String municipio, String telefono, String apellidos, String direccion, Usuarios usuario) {
         this.id_persona = id_persona;
         this.nombre = nombre;
         this.estado = estado;
@@ -24,7 +25,18 @@ public class Persona_model {
         this.telefono = telefono;
         this.apellidos = apellidos;
         this.direccion = direccion;
-        this.id_usuario = id_usuario;
+        this.usuario = usuario;
+    }
+
+    public Persona_model(String nombre, String estado, String pais, String municipio, String telefono, String apellidos, String direccion, Usuarios usuario) {        
+        this.nombre = nombre;
+        this.estado = estado;
+        this.pais = pais;
+        this.municipio = municipio;
+        this.telefono = telefono;
+        this.apellidos = apellidos;
+        this.direccion = direccion;
+        this.usuario = usuario;
     }
 
     public Persona_model(Persona persona){
@@ -36,7 +48,7 @@ public class Persona_model {
         this.telefono = persona.getTelefono();
         this.apellidos = persona.getApellidos();
         this.direccion = persona.getDireccion();
-        this.id_usuario = persona.getId_usuario();
+        this.usuario = persona.getId_usuario();
     }
 
     public int getId_persona() {
@@ -103,12 +115,12 @@ public class Persona_model {
         this.direccion = direccion;
     }
 
-    public int getId_usuario() {
-        return this.id_usuario;
+    public Usuarios getusuario() {
+        return this.usuario;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setusuario(Usuarios usuario) {
+        this.usuario = usuario;
     }
 
     public Persona_model id_persona(int id_persona) {
@@ -149,12 +161,7 @@ public class Persona_model {
     public Persona_model direccion(String direccion) {
         this.direccion = direccion;
         return this;
-    }
-
-    public Persona_model id_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
-        return this;
-    }
+    } 
 
     @Override
     public String toString() {
@@ -167,7 +174,7 @@ public class Persona_model {
             ", telefono='" + getTelefono() + "'" +
             ", apellidos='" + getApellidos() + "'" +
             ", direccion='" + getDireccion() + "'" +
-            ", id_usuario='" + getId_usuario() + "'" +
+            ", usuario='" + getusuario().getId_usuario() + "'" +
             "}";
     }
 }

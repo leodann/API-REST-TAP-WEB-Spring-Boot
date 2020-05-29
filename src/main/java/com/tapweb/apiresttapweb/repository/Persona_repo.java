@@ -22,5 +22,11 @@ public interface Persona_repo extends JpaRepository<Persona, Serializable>{
         nativeQuery = true
     )
     int getId(@Param("id_usuario")int id_usuario);
+
+    @Query(
+        value = "select * from personas where id_persona = :id_persona",
+        nativeQuery = true
+    )
+    Persona getById(@Param("id_persona")int id);
     
 }

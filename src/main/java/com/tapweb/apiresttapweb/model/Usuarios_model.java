@@ -1,11 +1,15 @@
 package com.tapweb.apiresttapweb.model;
 
+import java.util.*;
+
+import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
 
 public class Usuarios_model {
     private int id_usuario;
     private String email;
     private String password;
+    private List<Roles_Usuarios> roles;
 
 
     public Usuarios_model() {
@@ -21,6 +25,15 @@ public class Usuarios_model {
         this.id_usuario = usuario.getId_usuario();
         this.email = usuario.getEmail();
         this.password = usuario.getPassword();
+        this.roles = usuario.getRoles();
+    }
+
+    public List<Roles_Usuarios> getRoles(){
+        return this.roles;
+    }
+
+    public void setRoles(List<Roles_Usuarios> roles){
+        this.roles = roles;
     }
 
     public int getId_usuario() {
