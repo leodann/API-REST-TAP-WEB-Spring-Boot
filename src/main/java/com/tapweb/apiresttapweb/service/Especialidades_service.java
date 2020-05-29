@@ -34,7 +34,11 @@ public class Especialidades_service {
         return convertidor.convertir_especialidades(esp_repo.findAll());
     }
 
-    /*public List<Especialidades_model>getEspByMedico(int id_persona){
+    public Especialidades getEspById(int id){
+        return esp_repo.getById(id);
+    }
+
+    public List<Especialidades_model>getEspByMedico(int id_persona){
         return convertidor.convertir_especialidades(esp_repo.getByMedico(id_persona));
-    }*/
+    }
 }

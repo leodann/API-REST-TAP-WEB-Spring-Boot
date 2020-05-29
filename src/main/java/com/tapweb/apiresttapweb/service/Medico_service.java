@@ -34,5 +34,9 @@ public class Medico_service {
             return false;
         }
     }
+
+    public Medico getMedicoById(int id){
+        return med_repo.getById(id);
+    }
     
 }

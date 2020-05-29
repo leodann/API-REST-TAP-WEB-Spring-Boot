@@ -1,5 +1,8 @@
 package com.tapweb.apiresttapweb.model;
 
+import java.util.List;
+
+import com.tapweb.apiresttapweb.entity.Esp_med;
 import com.tapweb.apiresttapweb.entity.Medico;
 import com.tapweb.apiresttapweb.entity.Persona;
 
@@ -7,6 +10,7 @@ public class Medico_model {
     private int id_persona;
     private String numero_cedula;
     private Persona persona;
+    private List<Esp_med>esp_meds;
 
 
     public Medico_model() {
@@ -27,6 +31,15 @@ public class Medico_model {
         this.id_persona = m.getId_persona();
         this.numero_cedula = m.getNumero_cedula();
         this.persona = m.getPersona();
+        this.esp_meds = m.gEsp_meds();
+    }
+
+    public List<Esp_med>gEsp_meds(){
+        return this.esp_meds;
+    }
+
+    public void setEsp_mesd(List<Esp_med> e){
+        this.esp_meds = e;
     }
 
     public int getId_persona() {

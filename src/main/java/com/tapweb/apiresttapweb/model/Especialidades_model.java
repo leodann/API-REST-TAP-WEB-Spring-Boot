@@ -1,10 +1,14 @@
 package com.tapweb.apiresttapweb.model;
 
+import java.util.List;
+
+import com.tapweb.apiresttapweb.entity.Esp_med;
 import com.tapweb.apiresttapweb.entity.Especialidades;
 
 public class Especialidades_model {
     private int id_especialidad;
-    private String especialidad;
+    private String especialidad;    
+    private List<Esp_med> esp_meds;
 
     public Especialidades_model() {
     }
@@ -17,6 +21,15 @@ public class Especialidades_model {
     public Especialidades_model(Especialidades es){
         this.id_especialidad = es.getId_especialidad();
         this.especialidad = es.getEspecialidad();
+        this.esp_meds = es.gEsp_meds();
+    }
+    
+    public List<Esp_med>gEsp_meds(){
+        return this.esp_meds;
+    }
+
+    public void setEsp_meds(List<Esp_med>e){
+        this.esp_meds = e;
     }
 
     public int getId_especialidad() {
