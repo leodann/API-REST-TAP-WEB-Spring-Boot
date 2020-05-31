@@ -24,12 +24,15 @@ public class Medico implements Serializable{
 
     @OneToOne
     @JoinColumn(name = "id_persona")
-    @JsonIgnore
+    //@JsonIgnore
     private Persona persona;
 
     @OneToMany(mappedBy = "medico")
-    @JsonIgnore
+    //@JsonIgnore
     private List<Esp_med> esp_meds;
+
+    @OneToMany(mappedBy = "medico_servicios")
+    private List<Servicios> servicios_medicos;
 
 
     public Medico() {
@@ -57,6 +60,22 @@ public class Medico implements Serializable{
         this.numero_cedula = numero_cedula;
         this.persona = persona;
         this.esp_meds = e;
+    }
+
+    public Medico(int id_persona, String numero_cedula, Persona persona, List<Esp_med>e,List<Servicios>s) {
+        this.id_persona = id_persona;
+        this.numero_cedula = numero_cedula;
+        this.persona = persona;
+        this.esp_meds = e;
+        this.servicios_medicos = s;
+    }    
+
+    public List<Servicios>gServicios(){
+        return this.servicios_medicos;
+    }
+
+    public void setServicios(List<Servicios> s){
+        this.servicios_medicos = s;
     }
 
     public List<Esp_med> gEsp_meds(){

@@ -1,6 +1,8 @@
 package com.tapweb.apiresttapweb.composite_objects;
 
+import java.util.List;
 
+import com.tapweb.apiresttapweb.model.Especialidades_model;
 import com.tapweb.apiresttapweb.model.Persona_model;
 
 public class Persona_medico {
@@ -16,9 +18,8 @@ public class Persona_medico {
     private int id_usuario;
     private String email;
     private String password;
-    private int id_rol;    
-    /*private int id_epsecialidad;
-    private List<Especialidad_model> especialidades;*/
+    private int id_rol;        
+    private List<Especialidades_model> especialidades;
 
 
     public Persona_medico() {
@@ -53,7 +54,7 @@ public class Persona_medico {
         this.password = password;        
     }
 
-    public Persona_medico(Persona_model p, int id_rol, String numero_cedula){
+    public Persona_medico(Persona_model p, int id_rol, String numero_cedula,List<Especialidades_model>e){
         this.id_persona = p.getId_persona();
         this.nombre = p.getNombre();
         this.estado = p.getEstado();
@@ -67,7 +68,16 @@ public class Persona_medico {
         this.email = p.getusuario().getEmail();
         this.password = p.getusuario().getPassword();
         this.id_rol = id_rol;
+        this.especialidades = e;
     }   
+
+    public List<Especialidades_model>gEspecialidades(){
+        return this.especialidades;
+    }
+
+    public void setEspecialidades(List<Especialidades_model>e){
+        this.especialidades = e;
+    }
 
     public int getId_persona() {
         return this.id_persona;

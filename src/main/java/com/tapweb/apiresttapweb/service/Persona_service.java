@@ -9,6 +9,8 @@ import java.util.List;
 import com.tapweb.apiresttapweb.composite_objects.Persona_medico;
 import com.tapweb.apiresttapweb.composite_objects.Persona_paciente;
 import com.tapweb.apiresttapweb.converter.Convertidor;
+import com.tapweb.apiresttapweb.entity.Medico;
+import com.tapweb.apiresttapweb.entity.Paciente;
 import com.tapweb.apiresttapweb.entity.Persona;
 import com.tapweb.apiresttapweb.entity.Usuarios;
 import com.tapweb.apiresttapweb.model.Persona_model;
@@ -26,6 +28,13 @@ public class Persona_service {
     @Autowired
     @Qualifier("user_repo")
     private Usuarios_repo user_repo;
+    @Autowired
+    @Qualifier("med_serv")
+    private Medico_service med_serv;
+    @Autowired
+    @Qualifier("pac_serv")
+    private Paciente_service pac_serv;
+    
 
     @Autowired
     @Qualifier("convertidor")
@@ -80,7 +89,14 @@ public class Persona_service {
                 if  (persona_registrada){
                     int id_persona = getLastId();
                     Persona persona_paciente = getPersona(id_persona);
-                    paciente = new Persona_model(persona_paciente);
+                    Paciente aux_paciente = new Paciente(id_persona,nuevo_paciente.getFecha_nac());
+                    boolean paciente_registrado = pac_serv.registrar(aux_paciente);
+                    if  (paciente_registrado){
+                        paciente = new Persona_model(persona_paciente);
+                    }else{
+                        System.out.println("No se pudo registrar como paciente");
+                    }
+                    
                 }else{
                     System.out.println("No se pudo registrar persona");
                 }
@@ -95,7 +111,7 @@ public class Persona_service {
 
     
     public Persona_model persona_medico(Persona_medico nuevo_medico) {
-        Persona_model paciente = new Persona_model();
+        Persona_model medico = new Persona_model();
         try {            
             Usuarios aux_usuario = new Usuarios(
                                     nuevo_medico.getEmail(), 
@@ -116,9 +132,16 @@ public class Persona_service {
                 );
                 boolean persona_registrada = registrar(p);
                 if  (persona_registrada){
+                    //medico
                     int id_persona = getLastId();
-                    Persona persona_paciente = getPersona(id_persona);
-                    paciente = new Persona_model(persona_paciente);
+                    Persona persona_medico = getPersona(id_persona);
+                    Medico aux_medico = new Medico(id_persona,nuevo_medico.getNumero_cedula());
+                    boolean medico_registrado = med_serv.registrar(aux_medico);
+                    if(medico_registrado){
+                        medico = new Persona_model(persona_medico);
+                    }else{
+                        System.out.println("No se pudo registrar como medico");
+                    }                    
                 }else{
                     System.out.println("No se pudo registrar persona");
                 }
@@ -128,6 +151,6 @@ public class Persona_service {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return paciente;
+        return medico;
     }    
 }

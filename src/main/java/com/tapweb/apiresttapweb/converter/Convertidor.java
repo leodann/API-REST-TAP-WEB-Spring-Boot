@@ -9,6 +9,7 @@ import com.tapweb.apiresttapweb.entity.Paciente;
 import com.tapweb.apiresttapweb.entity.Persona;
 import com.tapweb.apiresttapweb.entity.Roles;
 import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
+import com.tapweb.apiresttapweb.entity.Servicios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
 import com.tapweb.apiresttapweb.model.Especialidades_model;
 import com.tapweb.apiresttapweb.model.Medico_model;
@@ -16,6 +17,7 @@ import com.tapweb.apiresttapweb.model.Paciente_model;
 import com.tapweb.apiresttapweb.model.Persona_model;
 import com.tapweb.apiresttapweb.model.Roles_Usuarios_model;
 import com.tapweb.apiresttapweb.model.Roles_model;
+import com.tapweb.apiresttapweb.model.Servicios_model;
 import com.tapweb.apiresttapweb.model.Usuarios_model;
 
 import org.springframework.stereotype.Component;
@@ -77,5 +79,13 @@ public class Convertidor {
             mespecialidades.add(new Especialidades_model(especialidad));
         }    
         return mespecialidades;
+    }
+
+    public List<Servicios_model>convertir_servicios(List<Servicios>servicios){
+        List<Servicios_model>mservicios = new ArrayList<>();
+        for(Servicios servicio : servicios){
+            mservicios.add(new Servicios_model(servicio));
+        }
+        return mservicios;
     }
 }

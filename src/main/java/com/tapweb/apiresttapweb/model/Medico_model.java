@@ -5,12 +5,14 @@ import java.util.List;
 import com.tapweb.apiresttapweb.entity.Esp_med;
 import com.tapweb.apiresttapweb.entity.Medico;
 import com.tapweb.apiresttapweb.entity.Persona;
+import com.tapweb.apiresttapweb.entity.Servicios;
 
 public class Medico_model {
     private int id_persona;
     private String numero_cedula;
     private Persona persona;
     private List<Esp_med>esp_meds;
+    private List<Servicios>servicios_medicos;
 
 
     public Medico_model() {
@@ -32,6 +34,15 @@ public class Medico_model {
         this.numero_cedula = m.getNumero_cedula();
         this.persona = m.getPersona();
         this.esp_meds = m.gEsp_meds();
+        this.servicios_medicos = m.gServicios();
+    }
+
+    public List<Servicios>gServicios(){
+        return this.servicios_medicos;
+    }
+
+    public void setServicios(List<Servicios> s){
+        this.servicios_medicos = s;
     }
 
     public List<Esp_med>gEsp_meds(){

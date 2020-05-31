@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import com.tapweb.apiresttapweb.composite_objects.Persona_medico;
 import com.tapweb.apiresttapweb.composite_objects.Persona_paciente;
+import com.tapweb.apiresttapweb.model.Especialidades_model;
 import com.tapweb.apiresttapweb.model.Persona_model;
 import com.tapweb.apiresttapweb.service.*;
 
@@ -24,6 +25,10 @@ public class Persona_controller {
     @Qualifier("per_serv")
     private Persona_service per_serv;
 
+    @Autowired
+    @Qualifier("esp_serv")
+    private Especialidades_service esp_serv;
+
     @GetMapping(value = "/personas/listar")
     public List<Persona_model> listar_personas(){
         return per_serv.listar();
@@ -39,7 +44,8 @@ public class Persona_controller {
     @PostMapping(value = "/personas/registrar/medico")
     public Persona_medico registrar_persona_medico(@RequestBody @Valid Persona_medico nuevo_medico){
         Persona_model mp = per_serv.persona_medico(nuevo_medico);
-        Persona_medico p = new Persona_medico(mp,1,nuevo_medico.getNumero_cedula());
+        List<Especialidades_model> especialidades = esp_serv.getEspByMedico(mp.getId_persona());
+        Persona_medico p = new Persona_medico(mp,1,nuevo_medico.getNumero_cedula(),especialidades);
         return p;
     }
    
