@@ -3,6 +3,7 @@ package com.tapweb.apiresttapweb.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tapweb.apiresttapweb.entity.Alergias;
 import com.tapweb.apiresttapweb.entity.Cirugias;
 import com.tapweb.apiresttapweb.entity.Especialidades;
 import com.tapweb.apiresttapweb.entity.Medico;
@@ -12,6 +13,7 @@ import com.tapweb.apiresttapweb.entity.Roles;
 import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
 import com.tapweb.apiresttapweb.entity.Servicios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
+import com.tapweb.apiresttapweb.model.Alergias_model;
 import com.tapweb.apiresttapweb.model.Cirugias_model;
 import com.tapweb.apiresttapweb.model.Especialidades_model;
 import com.tapweb.apiresttapweb.model.Medico_model;
@@ -97,5 +99,13 @@ public class Convertidor {
             mcirugias.add(new Cirugias_model(cirugia));
         }
         return mcirugias;
+    }
+
+    public List<Alergias_model>convertir_alergias (List<Alergias>alergias){
+        List<Alergias_model>malergias = new ArrayList<>();
+        for (Alergias alergia : alergias){
+            malergias.add(new Alergias_model(alergia));
+        }
+        return malergias;
     }
 }
