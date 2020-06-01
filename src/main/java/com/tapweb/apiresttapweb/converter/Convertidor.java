@@ -3,6 +3,7 @@ package com.tapweb.apiresttapweb.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tapweb.apiresttapweb.entity.Cirugias;
 import com.tapweb.apiresttapweb.entity.Especialidades;
 import com.tapweb.apiresttapweb.entity.Medico;
 import com.tapweb.apiresttapweb.entity.Paciente;
@@ -11,6 +12,7 @@ import com.tapweb.apiresttapweb.entity.Roles;
 import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
 import com.tapweb.apiresttapweb.entity.Servicios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
+import com.tapweb.apiresttapweb.model.Cirugias_model;
 import com.tapweb.apiresttapweb.model.Especialidades_model;
 import com.tapweb.apiresttapweb.model.Medico_model;
 import com.tapweb.apiresttapweb.model.Paciente_model;
@@ -87,5 +89,13 @@ public class Convertidor {
             mservicios.add(new Servicios_model(servicio));
         }
         return mservicios;
+    }
+
+    public List<Cirugias_model>convertir_cirugias(List<Cirugias> cirugias){
+        List<Cirugias_model>mcirugias = new ArrayList<>();
+        for (Cirugias cirugia : cirugias){
+            mcirugias.add(new Cirugias_model(cirugia));
+        }
+        return mcirugias;
     }
 }

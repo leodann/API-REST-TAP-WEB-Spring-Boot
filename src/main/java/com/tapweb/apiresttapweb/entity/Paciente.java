@@ -1,11 +1,13 @@
 package com.tapweb.apiresttapweb.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,6 +27,9 @@ public class Paciente implements Serializable{
     @JoinColumn(name = "id_persona")
     @JsonIgnore
     private Persona persona;
+
+    @OneToMany(mappedBy = "paciente_cirugia")
+    private List<Cirugias> cirugias;
 
 
     public Paciente() {

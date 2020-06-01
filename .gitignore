@@ -29,6 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+api-rest-workspace.code-workspace
 
 ###DBsql###
 DB.sql

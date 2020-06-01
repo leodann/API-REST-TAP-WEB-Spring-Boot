@@ -34,4 +34,8 @@ public class Paciente_service {
     public List<Paciente_model> listar_pacientes(){
         return convertidor.convertir_paciente(pac_repo.findAll());
     }
+
+    public Paciente getPaciente(int id){
+        return pac_repo.getPacienteById(id);
+    }
 }
