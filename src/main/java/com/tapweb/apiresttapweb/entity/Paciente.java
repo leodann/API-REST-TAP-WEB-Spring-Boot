@@ -34,6 +34,9 @@ public class Paciente implements Serializable{
     @OneToMany(mappedBy = "paciente_alergia")
     private List<Alergias> alergias;
 
+    @OneToMany(mappedBy = "paciente_cronica")
+    private List<Enf_Cronicas> cronicas;
+
 
     public Paciente() {
     }

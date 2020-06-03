@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.tapweb.apiresttapweb.entity.Alergias;
 import com.tapweb.apiresttapweb.entity.Cirugias;
+import com.tapweb.apiresttapweb.entity.Enf_Cronicas;
 import com.tapweb.apiresttapweb.entity.Especialidades;
 import com.tapweb.apiresttapweb.entity.Medico;
 import com.tapweb.apiresttapweb.entity.Paciente;
@@ -15,6 +16,7 @@ import com.tapweb.apiresttapweb.entity.Servicios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
 import com.tapweb.apiresttapweb.model.Alergias_model;
 import com.tapweb.apiresttapweb.model.Cirugias_model;
+import com.tapweb.apiresttapweb.model.Enf_Cronicas_model;
 import com.tapweb.apiresttapweb.model.Especialidades_model;
 import com.tapweb.apiresttapweb.model.Medico_model;
 import com.tapweb.apiresttapweb.model.Paciente_model;
@@ -107,5 +109,13 @@ public class Convertidor {
             malergias.add(new Alergias_model(alergia));
         }
         return malergias;
+    }
+
+    public List<Enf_Cronicas_model>convertir_enf (List<Enf_Cronicas> cronicas){
+        List<Enf_Cronicas_model>mcronicas = new ArrayList<>();
+        for (Enf_Cronicas cronica : cronicas){
+            mcronicas.add(new Enf_Cronicas_model(cronica));
+        }
+        return mcronicas;
     }
 }
