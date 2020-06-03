@@ -26,5 +26,14 @@ public interface Especialidades_repo extends JpaRepository<Especialidades,Serial
         nativeQuery = true
     )
     List<Especialidades> getByMedico(@Param("id_persona") int id_persona);
+
+    @Query(
+        value = "select * from especialidades e where exists("+
+                " select * from esp_consulta ec "+
+                " where id_consulta = :id_consulta"+
+                " and ec.id_especialidad = e.id_especialidad)",
+        nativeQuery = true            
+    )
+    List<Especialidades> getEspConsulta(@Param("id_consulta")int id_consulta);
     
 }

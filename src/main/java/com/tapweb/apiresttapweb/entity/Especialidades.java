@@ -27,6 +27,9 @@ public class Especialidades implements Serializable{
     @JsonIgnore
     private List<Esp_med>espe_med;
 
+    @OneToMany(mappedBy = "especialidad_cons")
+    private List<Esp_Consultas> consultas;
+
     public Especialidades() {
     }
 

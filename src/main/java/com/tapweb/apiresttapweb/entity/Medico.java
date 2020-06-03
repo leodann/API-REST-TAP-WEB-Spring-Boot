@@ -26,6 +26,9 @@ public class Medico implements Serializable{
     @JoinColumn(name = "id_persona")
     //@JsonIgnore
     private Persona persona;
+    
+    @OneToMany(mappedBy = "atiende")
+    private List<Consultas> consutlas_atendidas;
 
     @OneToMany(mappedBy = "medico")
     //@JsonIgnore

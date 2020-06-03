@@ -41,4 +41,8 @@ public class Especialidades_service {
     public List<Especialidades_model>getEspByMedico(int id_persona){
         return convertidor.convertir_especialidades(esp_repo.getByMedico(id_persona));
     }
+
+    public List<Especialidades_model> getEspByConsulta(int id_consulta){
+        return convertidor.convertir_especialidades(esp_repo.getEspConsulta(id_consulta));
+    }
 }

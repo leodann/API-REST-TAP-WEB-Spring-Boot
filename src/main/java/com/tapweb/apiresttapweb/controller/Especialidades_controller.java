@@ -28,6 +28,11 @@ public class Especialidades_controller {
         return esp_serv.listar_especialidades();
     }
 
+    @GetMapping(value = "/especialidades/consulta/listar")
+    public List<Especialidades_model>listarByConsulta(int id_consulta){
+        return esp_serv.getEspByConsulta(id_consulta);
+    }
+
     @PostMapping(value = "/especialidades/registrar")    
     public boolean registrar(@RequestBody @Valid Especialidades especialidad){
         return esp_serv.registrar_especialidad(especialidad);

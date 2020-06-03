@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.tapweb.apiresttapweb.entity.Alergias;
 import com.tapweb.apiresttapweb.entity.Cirugias;
+import com.tapweb.apiresttapweb.entity.Consultas;
 import com.tapweb.apiresttapweb.entity.Enf_Cronicas;
+import com.tapweb.apiresttapweb.entity.Esp_Consultas;
 import com.tapweb.apiresttapweb.entity.Especialidades;
 import com.tapweb.apiresttapweb.entity.Medico;
 import com.tapweb.apiresttapweb.entity.Paciente;
@@ -16,7 +18,9 @@ import com.tapweb.apiresttapweb.entity.Servicios;
 import com.tapweb.apiresttapweb.entity.Usuarios;
 import com.tapweb.apiresttapweb.model.Alergias_model;
 import com.tapweb.apiresttapweb.model.Cirugias_model;
+import com.tapweb.apiresttapweb.model.Consultas_model;
 import com.tapweb.apiresttapweb.model.Enf_Cronicas_model;
+import com.tapweb.apiresttapweb.model.Esp_Consutlas_model;
 import com.tapweb.apiresttapweb.model.Especialidades_model;
 import com.tapweb.apiresttapweb.model.Medico_model;
 import com.tapweb.apiresttapweb.model.Paciente_model;
@@ -117,5 +121,21 @@ public class Convertidor {
             mcronicas.add(new Enf_Cronicas_model(cronica));
         }
         return mcronicas;
+    }
+
+    public List<Consultas_model>convertir_consultas(List<Consultas>consultas){
+        List<Consultas_model>mconsultas = new ArrayList<>();
+        for (Consultas consulta : consultas){
+            mconsultas.add(new Consultas_model(consulta));
+        }
+        return mconsultas;
+    }
+
+    public List<Esp_Consutlas_model>conveEsp_Consutlas_models (List<Esp_Consultas>e){
+        List<Esp_Consutlas_model> me = new ArrayList<>();
+        for(Esp_Consultas c : e){
+            me.add(new Esp_Consutlas_model(c));
+        }
+        return me;
     }
 }
