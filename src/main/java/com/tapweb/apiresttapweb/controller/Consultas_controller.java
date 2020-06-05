@@ -7,7 +7,9 @@ import javax.validation.Valid;
 import com.tapweb.apiresttapweb.composite_objects.Consulta_wrapper;
 import com.tapweb.apiresttapweb.entity.Consultas;
 import com.tapweb.apiresttapweb.entity.Medico;
+import com.tapweb.apiresttapweb.model.Consulta_vista_model;
 import com.tapweb.apiresttapweb.model.Consultas_model;
+import com.tapweb.apiresttapweb.service.Consulta_vista_service;
 import com.tapweb.apiresttapweb.service.Consultas_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,10 @@ public class Consultas_controller {
     @Qualifier("cons_serv")
     private Consultas_service cons_serv;
 
+    @Autowired
+    @Qualifier("cons_view_serv")
+    private Consulta_vista_service cons_view_serv;
+
     @GetMapping(value = "/consultas/listar")
     @ResponseBody
     public List<Consultas>listar(){
@@ -35,13 +41,23 @@ public class Consultas_controller {
     }
 
     @GetMapping(value = "/consultas/MisConsultas")
-    public List<Consultas>MisConsultas(int id_persona){
-        return cons_serv.getMisConsultas(id_persona);
+    public List<Consulta_vista_model>MisConsultas(int id_persona){
+        return cons_view_serv.listarTodo(id_persona);
+    }
+
+    @GetMapping(value = "/consultas")
+    public Consulta_vista_model miConsulta(int id_consulta, int id_persona){
+        return cons_view_serv.getById(id_persona, id_consulta);
     }
 
     @GetMapping(value = "/consultas/ById")
     public Consultas getConsulta(int id_consulta){
         return cons_serv.getConsultaById(id_consulta);
+    }
+
+    @GetMapping(value = "/consultas/noAtendidas")
+    public List<Consultas>noAtendidas(int id_persona){
+        return cons_serv.getNoAtendidas(id_persona);
     }
 
     @PostMapping(value = "/consultas/registrar")
@@ -52,10 +68,7 @@ public class Consultas_controller {
     
     @PutMapping(value = "/consultas/atender/{id_consulta}")
     public Consultas atender (@PathVariable int id_consulta, @RequestBody @Valid Medico medico){
-        int id_medico = medico.getId_persona();
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("id_medico: "+id_medico);
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        int id_medico = medico.getId_persona();        
         boolean atendida = cons_serv.updateMedicoCons(id_medico, id_consulta); 
         Consultas c = new Consultas();
         if(atendida){

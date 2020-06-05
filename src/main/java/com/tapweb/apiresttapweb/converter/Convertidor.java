@@ -15,6 +15,7 @@ import com.tapweb.apiresttapweb.entity.Persona;
 import com.tapweb.apiresttapweb.entity.Roles;
 import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
 import com.tapweb.apiresttapweb.entity.Servicios;
+import com.tapweb.apiresttapweb.entity.Sintomas;
 import com.tapweb.apiresttapweb.entity.Usuarios;
 import com.tapweb.apiresttapweb.model.Alergias_model;
 import com.tapweb.apiresttapweb.model.Cirugias_model;
@@ -28,6 +29,7 @@ import com.tapweb.apiresttapweb.model.Persona_model;
 import com.tapweb.apiresttapweb.model.Roles_Usuarios_model;
 import com.tapweb.apiresttapweb.model.Roles_model;
 import com.tapweb.apiresttapweb.model.Servicios_model;
+import com.tapweb.apiresttapweb.model.Sintomas_model;
 import com.tapweb.apiresttapweb.model.Usuarios_model;
 
 import org.springframework.stereotype.Component;
@@ -137,5 +139,13 @@ public class Convertidor {
             me.add(new Esp_Consutlas_model(c));
         }
         return me;
+    }
+
+    public List<Sintomas_model>convertir_sintomas (List<Sintomas>sintomas){
+        List<Sintomas_model>msintomas = new ArrayList<>();
+        for (Sintomas sintoma : sintomas){
+            msintomas.add(new Sintomas_model(sintoma));
+        }    
+        return msintomas;
     }
 }

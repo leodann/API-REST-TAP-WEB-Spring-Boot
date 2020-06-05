@@ -38,6 +38,9 @@ public class Consultas implements Serializable{
     @JsonIgnore
     private List<Esp_Consultas>especialdades;
 
+    @OneToMany(mappedBy = "consulta")
+    private List<Sintomas>sintomas;
+
 
     public Consultas() {
     }

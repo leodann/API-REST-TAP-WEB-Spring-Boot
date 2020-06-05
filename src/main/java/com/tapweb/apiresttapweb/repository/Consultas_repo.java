@@ -18,13 +18,13 @@ public interface Consultas_repo extends JpaRepository<Consultas, Serializable>{
         value = " SELECT * FROM consultas c"+
                 " WHERE c.id_medico IS NULL "+
                 " AND exists("+
-                " SELECT  *"+
+                " SELECT  DISTINCT e.id_consulta"+
                 " FROM esp_consulta e INNER JOIN medico_especialidad me on e.id_especialidad = me.id_especialidad"+
                 " WHERE me.id_persona = :id_persona"+
-                " AND e.id_consulta = c.id_consulta",
+                " AND e.id_consulta = c.id_consulta )",        
         nativeQuery = true
     )
-    List<Consultas> getNoAtendidas();    
+    List<Consultas> getNoAtendidas(@Param("id_persona")int id_persona);    
 
     @Query(
         value = "SELECT * FROM consultas WHERE id_paciente = :id_persona OR id_medico = :id_persona",
@@ -51,4 +51,10 @@ public interface Consultas_repo extends JpaRepository<Consultas, Serializable>{
         nativeQuery = true
     )
     Integer updateMedico(@Param("id_medico")int id_medico, @Param("id_consulta")int id_consulta);
+
+    @Query(
+        value = "SELECT * FROM consultas WHERE id_consulta = :id_consulta AND (id_paciente = :id_persona OR id_medico = :id_persona)",
+        nativeQuery = true
+    )
+    Consultas getMiconsulta(@Param("id_consulta")int id_consulta,@Param("id_persona")int id_persona);
 }

@@ -55,8 +55,8 @@ public class Consultas_service {
         return cons_repo.findAll();
     }
 
-    public List<Consultas>getNoAtendidas(){
-        return cons_repo.getNoAtendidas();
+    public List<Consultas>getNoAtendidas(int id_persona){
+        return cons_repo.getNoAtendidas(id_persona);
     }
 
     public List<Consultas>getMisConsultas(int id_persona){
@@ -75,6 +75,10 @@ public class Consultas_service {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public Consultas getMiConsultas(int id_consulta, int id_persona){
+        return cons_repo.getMiconsulta(id_consulta, id_persona);
     }
     
 }
