@@ -23,6 +23,8 @@ public class Consultas implements Serializable{
     private int id_consulta;
     @Column(name = "descripcion")
     private String descripcion;
+    @Column(name = "fecha")
+    private String fecha;
 
     @ManyToOne
     @JoinColumn(name = "id_paciente",referencedColumnName = "id_persona")
@@ -45,12 +47,21 @@ public class Consultas implements Serializable{
     public Consultas() {
     }
 
-    public Consultas(int id_consulta, String descripcion, Paciente paciente, Medico medico) {
+    public Consultas(int id_consulta, String descripcion, Paciente paciente, Medico medico, String fecha) {
         this.id_consulta = id_consulta;
         this.descripcion = descripcion;
-        this.paciente = paciente;
+        this.paciente = paciente;        
         this.atiende = medico;
+        this.fecha = fecha;
     }    
+
+    public String getFecha(){
+        return this.fecha;
+    }
+
+    public void setFecha(String f){
+        this.fecha = f;
+    }
 
     public Consultas (String desc, Paciente p){
         this.descripcion = desc;

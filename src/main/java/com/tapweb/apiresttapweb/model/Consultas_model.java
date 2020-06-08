@@ -11,6 +11,7 @@ public class Consultas_model {
     private int id_paciente;
     private int id_medico;
     private String descripcion;
+    private String fecha;
 
     private Paciente paciente;
     private Medico medico;    
@@ -26,10 +27,11 @@ public class Consultas_model {
         this.descripcion = des;
     }
 
-    public Consultas_model (int id_pacientes,String des, ArrayList<Integer>especialidades){
+    public Consultas_model (int id_pacientes,String des, ArrayList<Integer>especialidades,String fecha){
         this.id_paciente = id_pacientes;        
         this.descripcion = des;
         this.especialidades = especialidades;
+        this.fecha = fecha;
     }
 
     public Consultas_model(int id_consulta, int id_paciente, int id_medico, String descripcion, Paciente paciente, Medico medico) {
@@ -48,6 +50,15 @@ public class Consultas_model {
         this.descripcion = c.getDescripcion();
         this.paciente = c.getPaciente();
         this.medico = c.getMedico();
+        this.fecha = c.getFecha();
+    }
+
+    public String getFecha(){
+        return this.fecha;
+    }
+
+    public void setFecha(String f){
+        this.fecha = f;
     }
 
     public ArrayList<Integer>getEsp(){

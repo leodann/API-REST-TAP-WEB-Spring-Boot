@@ -2,6 +2,9 @@ package com.tapweb.apiresttapweb.model;
 
 import java.util.List;
 
+import com.tapweb.apiresttapweb.entity.Medico;
+import com.tapweb.apiresttapweb.entity.Paciente;
+
 public class Consulta_vista_model {
     private int id_consulta;
     private int id_paciente;
@@ -9,18 +12,48 @@ public class Consulta_vista_model {
     private int id_medico;
     private List<Sintomas_model>pruebas;
     private List<Especialidades_model>especialidades;
+    private Medico m;
+    private Paciente p;
+    private String fecha;
 
 
     public Consulta_vista_model() {
     }
 
-    public Consulta_vista_model(int id_consulta, int id_paciente, String descripcion, int id_medico, List<Sintomas_model> pruebas, List<Especialidades_model> especialidades) {
+    public Consulta_vista_model(int id_consulta, int id_paciente, String descripcion, int id_medico, List<Sintomas_model> pruebas, List<Especialidades_model> especialidades, Medico m, Paciente p,String fecha) {
         this.id_consulta = id_consulta;
         this.id_paciente = id_paciente;
         this.descripcion = descripcion;
         this.id_medico = id_medico;
         this.pruebas = pruebas;
         this.especialidades = especialidades;
+        this.m = m;
+        this.p = p;
+        this.fecha = fecha;
+    }
+
+    public String getFecha(){
+        return this.fecha;
+    }
+
+    public void setFecha(String f){
+        this.fecha = f;
+    }
+
+    public Medico getM (){
+        return this.m;
+    }
+
+    public void setM(Medico m){
+        this.m = m;
+    }
+
+    public Paciente getP(){
+        return p;
+    }
+
+    public void setP(Paciente p){
+        this.p = p;
     }
 
     public int getId_consulta() {
