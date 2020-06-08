@@ -35,7 +35,7 @@ public class Consultas_service {
     public boolean registrar(Consultas_model aux){
         try {
             Paciente p = pac_serv.getPaciente(aux.getId_paciente());
-            Consultas consulta = new Consultas(aux.getDescripcion(),p);
+            Consultas consulta = new Consultas(aux.getDescripcion(),p,aux.getFecha());
             cons_repo.save(consulta);
             int id_consulta = cons_repo.getIdTopDesc();
             System.out.println("id_consulta: "+id_consulta);

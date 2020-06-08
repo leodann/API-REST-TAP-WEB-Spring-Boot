@@ -32,6 +32,16 @@ public class Consulta_vista_model {
         this.fecha = fecha;
     }
 
+    public Consulta_vista_model(int id_consulta, int id_paciente, String descripcion, List<Sintomas_model> pruebas, List<Especialidades_model> especialidades, Paciente p,String fecha) {
+        this.id_consulta = id_consulta;
+        this.id_paciente = id_paciente;
+        this.descripcion = descripcion;     
+        this.pruebas = pruebas;
+        this.especialidades = especialidades;        
+        this.p = p;
+        this.fecha = fecha;
+    }
+
     public String getFecha(){
         return this.fecha;
     }

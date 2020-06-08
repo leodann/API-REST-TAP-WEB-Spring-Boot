@@ -63,9 +63,10 @@ public class Consultas implements Serializable{
         this.fecha = f;
     }
 
-    public Consultas (String desc, Paciente p){
+    public Consultas (String desc, Paciente p,String fecha){
         this.descripcion = desc;
         this.paciente = p;
+        this.fecha = fecha;
     }
 
     public int getId_consulta() {
