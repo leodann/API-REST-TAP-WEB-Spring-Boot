@@ -6,15 +6,25 @@ public class Consulta_wrapper {
     private int id_paciente;
     private String desc;    
     private ArrayList<Integer>especialidades;
+    private String fecha;
 
 
     public Consulta_wrapper() {
     }
 
-    public Consulta_wrapper(int id_paciente, String desc, ArrayList<Integer> especialidades) {
+    public Consulta_wrapper(int id_paciente, String desc, ArrayList<Integer> especialidades,String fecha) {
         this.id_paciente = id_paciente;
         this.desc = desc;
         this.especialidades = especialidades;
+        this.fecha = fecha;
+    }
+
+    public String getFecha (){
+        return this.fecha;
+    }
+
+    public void SetFecha(String f){
+        this.fecha = f;
     }
 
     public int getId_paciente() {

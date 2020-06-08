@@ -62,7 +62,7 @@ public class Consultas_controller {
 
     @PostMapping(value = "/consultas/registrar")
     public boolean registrarConsulta (@RequestBody @Valid Consulta_wrapper aux){
-        Consultas_model model_aux = new Consultas_model(aux.getId_paciente(),aux.getDesc(),aux.getEspecialidades());
+        Consultas_model model_aux = new Consultas_model(aux.getId_paciente(),aux.getDesc(),aux.getEspecialidades(),aux.getFecha());
         return cons_serv.registrar(model_aux);
     }    
     
