@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -42,6 +43,9 @@ public class Consultas implements Serializable{
 
     @OneToMany(mappedBy = "consulta")
     private List<Sintomas>sintomas;
+
+    @OneToOne(mappedBy = "id_consulta")
+    private Receta receta;
 
 
     public Consultas() {

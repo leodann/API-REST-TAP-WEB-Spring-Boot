@@ -12,6 +12,7 @@ import com.tapweb.apiresttapweb.entity.Especialidades;
 import com.tapweb.apiresttapweb.entity.Medico;
 import com.tapweb.apiresttapweb.entity.Paciente;
 import com.tapweb.apiresttapweb.entity.Persona;
+import com.tapweb.apiresttapweb.entity.Receta;
 import com.tapweb.apiresttapweb.entity.Roles;
 import com.tapweb.apiresttapweb.entity.Roles_Usuarios;
 import com.tapweb.apiresttapweb.entity.Servicios;
@@ -26,6 +27,7 @@ import com.tapweb.apiresttapweb.model.Especialidades_model;
 import com.tapweb.apiresttapweb.model.Medico_model;
 import com.tapweb.apiresttapweb.model.Paciente_model;
 import com.tapweb.apiresttapweb.model.Persona_model;
+import com.tapweb.apiresttapweb.model.Receta_model;
 import com.tapweb.apiresttapweb.model.Roles_Usuarios_model;
 import com.tapweb.apiresttapweb.model.Roles_model;
 import com.tapweb.apiresttapweb.model.Servicios_model;
@@ -148,4 +150,12 @@ public class Convertidor {
         }    
         return msintomas;
     }
+
+    public List<Receta_model> convertir_receta(List<Receta> recetas){
+        List<Receta_model> mreceta = new ArrayList<>();
+        for(Receta receta : recetas){
+            mreceta.add(new Receta_model(receta));
+          }
+        return mreceta;
+    }    
 }
