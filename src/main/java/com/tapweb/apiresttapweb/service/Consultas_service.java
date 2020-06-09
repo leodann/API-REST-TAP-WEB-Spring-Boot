@@ -55,6 +55,10 @@ public class Consultas_service {
         return cons_repo.findAll();
     }
 
+    public List<Consultas>all(){
+        return cons_repo.Todas();
+    }
+
     public List<Consultas>getNoAtendidas(int id_persona){
         return cons_repo.getNoAtendidas(id_persona);
     }

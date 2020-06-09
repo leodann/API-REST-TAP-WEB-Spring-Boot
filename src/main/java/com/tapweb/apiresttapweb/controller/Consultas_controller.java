@@ -33,18 +33,32 @@ public class Consultas_controller {
     @Autowired
     @Qualifier("cons_view_serv")
     private Consulta_vista_service cons_view_serv;
-
+    //DEPRECATED
     @GetMapping(value = "/consultas/listar")
     @ResponseBody
     public List<Consultas>listar(){
         return cons_serv.getAll();
     }
 
+    //PRUEBA1
+    @GetMapping(value = "/consultas/todas1")
+    public List<Consultas>todas(){
+        return cons_serv.all();
+    }
+
+    //PUREBA2
+    @GetMapping(value = "/consultas/todas2")
+    public List<Consulta_vista_model>todas2(){
+        return cons_view_serv.listar();
+    }
+
+
     @GetMapping(value = "/consultas/MisConsultas")
     public List<Consulta_vista_model>MisConsultas(int id_persona){
         return cons_view_serv.listarTodo(id_persona);
     }
 
+    //DEPRECATED
     @GetMapping(value = "/consultas")
     public Consulta_vista_model miConsulta(int id_consulta, int id_persona){
         return cons_view_serv.getById(id_persona, id_consulta);

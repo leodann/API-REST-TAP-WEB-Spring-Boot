@@ -33,6 +33,12 @@ public interface Consultas_repo extends JpaRepository<Consultas, Serializable>{
     List<Consultas>getMisConsultas(@Param("id_persona")int id_persona);
 
     @Query(
+        value = "SELECT * FROM consultas",
+        nativeQuery = true
+    )
+    List<Consultas>Todas();
+
+    @Query(
         value = "SELECT id_consulta FROM consultas ORDER BY id_consulta DESC LIMIT 1",
         nativeQuery = true
     )

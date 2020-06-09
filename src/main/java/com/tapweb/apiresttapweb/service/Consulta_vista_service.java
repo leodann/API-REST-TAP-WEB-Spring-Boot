@@ -9,6 +9,7 @@ import com.tapweb.apiresttapweb.entity.Paciente;
 import com.tapweb.apiresttapweb.model.Consulta_vista_model;
 import com.tapweb.apiresttapweb.model.Especialidades_model;
 import com.tapweb.apiresttapweb.model.Sintomas_model;
+import com.tapweb.apiresttapweb.repository.Consultas_repo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -35,6 +36,32 @@ public class Consulta_vista_service {
     @Autowired
     @Qualifier("med_serv")
     private Medico_service med_serv;
+
+    @Autowired
+    @Qualifier("cons_repo")
+    private Consultas_repo cons_repo;
+
+    public List<Consulta_vista_model>listar(){
+        List<Consulta_vista_model> cv = new ArrayList<>();
+        List<Consultas> cs = cons_repo.Todas();
+        for(Consultas c : cs){
+            int id_consulta = c.getId_consulta();            
+            int id_paciente = c.getPaciente().getId_persona();
+            Paciente p = pac_serv.getPaciente(id_paciente);
+            String desc = c.getDescripcion(); 
+            List<Sintomas_model>pruebas = sint_serv.listarSintomas(id_consulta);
+            List<Especialidades_model>especialidades = esp_serv.getEspByConsulta(id_consulta);
+            String fecha = c.getFecha();
+            if  (c.getMedico()!=null){
+                int id_medico = c.getMedico().getId_persona();
+                Medico m = med_serv.getMedicoById(id_medico);
+                cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));            
+            }else{
+                cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,pruebas,especialidades,p,fecha));            
+            }
+        }
+        return cv;
+    }
 
     public List<Consulta_vista_model> listarTodo(int id_persona){
         List<Consulta_vista_model>cv = new ArrayList<>();
