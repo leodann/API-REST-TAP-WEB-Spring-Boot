@@ -26,6 +26,9 @@ public class Receta_service {
         try {
             Consultas c = cons_serv.getConsultaById(r.getId_consulta());
             Receta receta = new Receta( r.getConclusion(),r.getDescripcion(),r.getMedicamentos(),c);
+            if (r.getId_receta()!=0){
+                receta.setId_receta(r.getId_receta());
+            }
             rec_repo.save(receta);
             return true;
         } catch (Exception e) {
