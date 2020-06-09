@@ -2,6 +2,7 @@ package com.tapweb.apiresttapweb.service;
 
 import java.util.List;
 
+import com.tapweb.apiresttapweb.composite_objects.Receta_wrapper;
 import com.tapweb.apiresttapweb.entity.Consultas;
 import com.tapweb.apiresttapweb.entity.Receta;
 import com.tapweb.apiresttapweb.model.Receta_model;
@@ -39,5 +40,23 @@ public class Receta_service {
 
     public Receta getReceta (int id_consulta){
         return rec_repo.getByConsulta(id_consulta);
+    }
+
+    public int UpdateReceta (Receta_wrapper rw){
+        String conclusion = rw.getCon();
+        String descripcion = rw.getDesc();
+        String medicamentos = rw.getMed();
+        int id_consulta = rw.getid_consulta();
+        return rec_repo.updateConsulta(conclusion, descripcion, medicamentos, id_consulta); 
+    }
+
+    public boolean delete (Receta_wrapper rw){
+        try {
+            Receta r = rec_repo.getByConsulta(rw.getid_consulta());
+            rec_repo.delete(r);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
