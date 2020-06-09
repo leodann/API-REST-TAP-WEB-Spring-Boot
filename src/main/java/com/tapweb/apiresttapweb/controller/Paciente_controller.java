@@ -32,4 +32,11 @@ public class Paciente_controller {
     public List<Paciente_model>listar_pacientes(){
         return pac_serv.listar_pacientes();
     }
+
+    @GetMapping(value = "/paciente/getPaciente")
+    public Paciente_model getPaciente (int id_paciente){
+        Paciente p = pac_serv.getPaciente(id_paciente);
+        Paciente_model paciente = new Paciente_model(p);
+        return paciente;
+    }
 }

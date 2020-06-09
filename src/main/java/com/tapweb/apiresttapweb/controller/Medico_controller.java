@@ -32,4 +32,11 @@ public class Medico_controller {
     public List<Medico_model> listarMedicos(){
         return med_serv.listar_medicos();
     }
+
+    @GetMapping(value = "/medico/getMedico")
+    public Medico_model getMedico(int id_medico){
+        Medico m = med_serv.getMedicoById(id_medico);
+        Medico_model medico = new Medico_model(m);
+        return medico;
+    }
 }
