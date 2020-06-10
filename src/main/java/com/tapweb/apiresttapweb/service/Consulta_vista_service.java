@@ -45,7 +45,7 @@ public class Consulta_vista_service {
         List<Consulta_vista_model> cv = new ArrayList<>();
         List<Consultas> cs = cons_repo.Todas();
         for(Consultas c : cs){
-            int id_consulta = c.getId_consulta();            
+            /*int id_consulta = c.getId_consulta();            
             int id_paciente = c.getPaciente().getId_persona();
             Paciente p = pac_serv.getPaciente(id_paciente);
             String desc = c.getDescripcion(); 
@@ -54,7 +54,9 @@ public class Consulta_vista_service {
             String fecha = c.getFecha();
             int id_medico = c.getMedico().getId_persona();
             Medico m = med_serv.getMedicoById(id_medico);
-            cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));            
+            cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));            */
+            cv.add(getById(c.getPaciente(),c.getId_consulta()));
+
         }
         return cv;
     }
@@ -63,7 +65,7 @@ public class Consulta_vista_service {
         List<Consulta_vista_model>cv = new ArrayList<>();
         List<Consultas> consultas = cons_serv.getMisConsultas(id_persona);
         for (Consultas c: consultas){
-            int id_consulta = c.getId_consulta();            
+            /*int id_consulta = c.getId_consulta();            
             int id_paciente = c.getPaciente().getId_persona();
             Paciente p = pac_serv.getPaciente(id_paciente);
             String desc = c.getDescripcion(); 
@@ -72,7 +74,8 @@ public class Consulta_vista_service {
             String fecha = c.getFecha();            
                 int id_medico = c.getMedico().getId_persona();
                 Medico m = med_serv.getMedicoById(id_medico);
-                cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));                        
+                cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));     */   
+            cv.add(getById(id_persona,c.getId_consulta()));                
         }
         return cv;
     }
