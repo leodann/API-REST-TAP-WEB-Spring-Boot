@@ -36,7 +36,7 @@ public class Consultas_controller {
     //DEPRECATED
     @GetMapping(value = "/consultas/listar")
     @ResponseBody
-    public List<Consultas>listar(){
+    public List<Consultas_model>listar(){
         return cons_serv.getAll();
     }
 

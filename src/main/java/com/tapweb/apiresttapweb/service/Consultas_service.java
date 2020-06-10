@@ -51,8 +51,8 @@ public class Consultas_service {
         }
     }
 
-    public List<Consultas>getAll(){
-        return cons_repo.findAll();
+    public List<Consultas_model>getAll(){
+        return convertidor.convertir_consultas(cons_repo.findAll());
     }
 
     public List<Consultas>all(){
