@@ -52,13 +52,9 @@ public class Consulta_vista_service {
             List<Sintomas_model>pruebas = sint_serv.listarSintomas(id_consulta);
             List<Especialidades_model>especialidades = esp_serv.getEspByConsulta(id_consulta);
             String fecha = c.getFecha();
-            if  (c.getMedico()!=null){
-                int id_medico = c.getMedico().getId_persona();
-                Medico m = med_serv.getMedicoById(id_medico);
-                cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));            
-            }else{
-                cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,pruebas,especialidades,p,fecha));            
-            }
+            int id_medico = c.getMedico().getId_persona();
+            Medico m = med_serv.getMedicoById(id_medico);
+            cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));            
         }
         return cv;
     }
@@ -73,14 +69,10 @@ public class Consulta_vista_service {
             String desc = c.getDescripcion(); 
             List<Sintomas_model>pruebas = sint_serv.listarSintomas(id_consulta);
             List<Especialidades_model>especialidades = esp_serv.getEspByConsulta(id_consulta);
-            String fecha = c.getFecha();
-            if  (c.getMedico()!=null){
+            String fecha = c.getFecha();            
                 int id_medico = c.getMedico().getId_persona();
                 Medico m = med_serv.getMedicoById(id_medico);
-                cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));            
-            }else{
-                cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,pruebas,especialidades,p,fecha));            
-            }            
+                cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));                        
         }
         return cv;
     }
