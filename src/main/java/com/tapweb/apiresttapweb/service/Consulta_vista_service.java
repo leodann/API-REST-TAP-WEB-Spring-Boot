@@ -44,7 +44,10 @@ public class Consulta_vista_service {
     public List<Consulta_vista_model>listar(){
         List<Consulta_vista_model> cv = new ArrayList<>();
         List<Consultas> cs = cons_repo.Todas();
-        for(Consultas c : cs){
+        for(Consultas consulta : cs){
+            System.out.println(consulta.toString());
+        }
+        /*for(Consultas c : cs){
             /*int id_consulta = c.getId_consulta();            
             
             Paciente p = pac_serv.getPaciente(id_paciente);
@@ -54,19 +57,22 @@ public class Consulta_vista_service {
             String fecha = c.getFecha();
             int id_medico = c.getMedico().getId_persona();
             Medico m = med_serv.getMedicoById(id_medico);
-            cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));            */
+            cv.add(new Consulta_vista_model(id_consulta,id_paciente,desc,id_medico,pruebas,especialidades,m,p,fecha));
             int id_paciente = c.getPaciente().getId_persona();
             System.out.println(c.toString());
             cv.add(getById(id_paciente,c.getId_consulta()));
 
-        }
+        }*/
         return cv;
     }
 
     public List<Consulta_vista_model> listarTodo(int id_persona){
         List<Consulta_vista_model>cv = new ArrayList<>();
         List<Consultas> consultas = cons_serv.getMisConsultas(id_persona);
-        for (Consultas c: consultas){
+        for(Consultas consulta : consultas){
+            System.out.println(consulta.toString());
+        }
+        /*for (Consultas c: consultas){
             Consulta_vista_model cb = new Consulta_vista_model();
 
             int id_consulta = c.getId_consulta();            
@@ -79,7 +85,7 @@ public class Consulta_vista_service {
             int id_medico = c.getAtiende().getId_persona();
             Medico m = med_serv.getMedicoById(id_medico);                         
 
-        }
+        }*/
         return cv;
     }
 
