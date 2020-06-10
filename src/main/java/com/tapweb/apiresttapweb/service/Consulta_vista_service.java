@@ -76,7 +76,7 @@ public class Consulta_vista_service {
             List<Sintomas_model>pruebas = sint_serv.listarSintomas(id_consulta);
             List<Especialidades_model>especialidades = esp_serv.getEspByConsulta(id_consulta);
             String fecha = c.getFecha();            
-            int id_medico = c.getMedico().getId_persona();
+            int id_medico = c.getAtiende().getId_persona();
             Medico m = med_serv.getMedicoById(id_medico);                         
 
         }
@@ -89,7 +89,7 @@ public class Consulta_vista_service {
         
         int id_paciente = consulta.getPaciente().getId_persona();
         String desc = consulta.getDescripcion();
-        int id_medico = consulta.getMedico().getId_persona();
+        int id_medico = consulta.getAtiende().getId_persona();
         List<Sintomas_model> pruebas = sint_serv.listarSintomas(id_consulta);
         List<Especialidades_model> especialidades = esp_serv.getEspByConsulta(id_consulta);
         Paciente p = pac_serv.getPaciente(id_paciente);

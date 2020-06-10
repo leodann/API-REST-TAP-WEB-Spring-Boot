@@ -46,10 +46,10 @@ public class Consultas_model {
     public Consultas_model(Consultas c ){
         this.id_consulta = c.getId_consulta();
         this.id_paciente = c.getPaciente().getId_persona();
-        this.id_medico = c.getMedico().getId_persona();
+        this.id_medico = c.getAtiende().getId_persona();
         this.descripcion = c.getDescripcion();
         this.paciente = c.getPaciente();
-        this.medico = c.getMedico();
+        this.medico = c.getAtiende();
         this.fecha = c.getFecha();
     }
 
